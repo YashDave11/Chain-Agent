@@ -1,0 +1,240 @@
+================================================================================
+                    CHAINAGENT - TEXT-TO-SPEECH PITCH SCRIPT
+                         With Emotional Delivery Cues
+================================================================================
+
+[confident, warm tone] Hello everyone. [brief pause]
+
+[leaning in, curious] How many of you have ever missed a perfect buying 
+opportunity... [dramatically] because you weren't watching the charts at 3 AM?
+
+[knowing chuckle] Yeah, I see those nods.
+
+[storytelling voice] Last month, ETH dropped eight percent in a flash crash. 
+[speeds up slightly] By the time most people woke up, it had already recovered. 
+[disappointed sigh] The opportunity? Gone.
+
+[building excitement] But what if... [pause for effect] what if you could sleep 
+peacefully, knowing an AI agent was watching the market for you... 
+[emphasizing each word] and actually executing trades on your behalf?
+
+[proudly, with energy] Today, I'm excited to introduce ChainAgent! 
+[pause] The first autonomous DCA platform powered by MetaMask's brand new 
+Advanced Permissions standard.
+
+---
+
+[transitioning, more serious] Let's talk about Dollar-Cost Averaging, or DCA. 
+[matter-of-fact] It's one of the most proven investment strategies, especially 
+for volatile assets like crypto.
+
+[frustrated tone] The problem? [sighs] It requires CONSTANT attention.
+
+[counting on fingers, emphasizing each point]
+One: You need to manually execute trades at specific intervals.
+Two: You miss opportunities when prices dip unexpectedly.
+[slightly annoyed] And three: Existing solutions require you to give up 
+custody of your funds.
+
+[sarcastically] Current DEX aggregators can help with swaps, sure... 
+[mimics disappointment] but they can't ACT on your behalf. You still need to 
+initiate every. single. transaction.
+
+[dismissive] And centralized exchanges? [scoffs] They require you to deposit 
+your funds, giving up custody and control. [shakes head] No thank you.
+
+[thoughtfully] We asked ourselves: [pause] What if we could have the automation 
+of centralized services... [building] with the security of self-custody?
+
+---
+
+[brightening up, proud] ChainAgent is an autonomous DCA platform that uses 
+MetaMask's ERC-seven-seven-one-five Advanced Permissions to safely automate 
+your crypto investments.
+
+[enthusiastic] Here's how it works in three simple steps!
+
+[holding up finger] Step One: Grant Permission.
+[explaining clearly] You connect your MetaMask wallet and set your parameters. 
+Daily USDC limit... say a hundred dollars. Duration... thirty days. 
+Buy trigger... when ETH drops five percent.
+
+[technical but accessible] This creates a TIME-BOUND, AMOUNT-LIMITED permission 
+grant using the wallet underscore grant Permissions RPC method. 
+[reassuringly] Your funds never leave your wallet.
+
+[continuing] Step Two: Agent Monitors.
+[descriptive] Our Coordinator Agent, deployed on Sepolia testnet, receives this 
+permission and monitors the market... [whispers dramatically] twenty-four-seven. 
+[normal voice] When ETH price drops by your threshold... [snaps fingers] 
+it activates.
+
+[building momentum] Step Three: Automatic Execution!
+[explaining with energy] The Coordinator Agent issues a SUB-DELEGATION to our 
+Execution Agent using the ERC-seven-seven-one-zero delegation framework. 
+The Execution Agent then swaps your USDC for ETH on Uniswap...
+
+[pausing for emphasis] ...all within your approved limits.
+
+[triumphantly, pointing] The ETH lands directly in YOUR wallet. 
+[slowly, emphasizing] Not ours. Yours.
+
+---
+
+[excited, demo mode] Now let me show you the live dashboard!
+
+[pointing at screen] Here you can see... real-time connection to Sepolia testnet. 
+[impressed tone] Look at this... live block updates! Watch this number increment.
+
+[enthusiastically] The Live Status card shows real-time data pulled directly 
+from our smart contracts using wagmi hooks with automatic five-second polling 
+and block-based refresh.
+
+[gesturing] And this... [appreciating] the History Timeline! 
+Powered by Envio's HyperIndex. It shows every action:
+[listing] Permission granted... sub-delegation issued... swaps executed... 
+ETH transferred.
+
+[demonstrating] When you click "Grant Permission and Start"... 
+[attention-grabbing] Notice! We're NOT asking for unlimited approval.
+
+[carefully] We're asking for: a specific daily limit, a specific total limit, 
+and a specific time duration.
+
+[proud] THIS is the power of ERC-seven-seven-one-five. 
+[emphasizing each word] Granular. Revocable. Time-bound permissions.
+
+---
+
+[shifting to technical, knowledgeable tone] Let me break down the technical stack.
+
+[counting] We deployed three contracts to Sepolia:
+
+[first finger] One: Mock Price Oracle. 
+[explaining] Simulates Chainlink price feeds. Returns ETH price with 
+eight-decimal precision. Supports price dip simulation for demos.
+
+[second finger] Two: Coordinator Agent. [impressed] The brain of our system.
+It receives permissions via the receive Permission function, tracks daily 
+and total spending limits, issues sub-delegations to Execution Agent, and 
+emits events like Permission Granted and Sub-Delegation Issued.
+
+[third finger] Three: Execution Agent. [decisive] The executor.
+It validates delegated authority, executes swaps via Uniswap V-three Router, 
+transfers acquired ETH to user's wallet, and tracks global and per-user statistics.
+
+[nodding] Our frontend uses Next.js sixteen with wagmi and viem for 
+React hooks-based Web-three integration.
+
+[impressed whisper] And all contract events? 
+[normal] Indexed via Envio HyperIndex with sub-second latency.
+
+---
+
+[addressing concerns, serious] Now... let's address the elephant in the room.
+
+[skeptical voice, mimicking audience] "Why should I trust your agents?"
+
+[smiling] Great question.
+
+[confident, counting] Here's our security model:
+
+[firmly] One: Non-custodial. Your funds NEVER leave your wallet. 
+Agents can only move assets within your pre-approved limits.
+
+[reassuring] Two: Time-bound permissions. Every permission has an expiration. 
+Seven days, thirty days, ninety days... you choose. After that? Auto-revoke.
+
+[protective] Three: Daily limits. Even within the permission window, 
+agents are capped at your daily limit. [example] A hundred USDC per day limit 
+means that's the MAXIMUM exposure. Per. Day.
+
+[transparent] Four: On-chain transparency. Every action is recorded on-chain 
+and indexed via Envio. You can verify every swap, every delegation, every transfer.
+
+[empowering] Five: Revocable anytime. Changed your mind? 
+[snaps] Revoke the permission instantly through the dashboard.
+
+[profound] This is the future of autonomous finance... 
+[slowly] trustless by design.
+
+---
+
+[energized, opportunity] The DCA market is MASSIVE.
+
+[citing] Coinbase reports over two billion dollars in recurring buys set up 
+by users. DeFi Llama tracks fifty-plus billion in DEX volume monthly.
+
+[excitedly] And ERC-seven-seven-one-five is brand new! 
+[confidently] We're first movers in this space.
+
+[visionary] ChainAgent bridges CeFi convenience with DeFi security. 
+We're not just building a product... [building] we're establishing a new 
+paradigm for autonomous on-chain agents.
+
+---
+
+[future-focused] Where do we go from here?
+
+[listing] Phase One, now: DCA automation with price-dip triggers on Sepolia.
+
+Phase Two: Mainnet deployment plus multi-token support... WBTC, stablecoins.
+
+[getting excited] Phase Three: Advanced strategies! Grid trading, limit orders, 
+yield farming delegation.
+
+[dreaming big] Phase Four: AI-powered strategy recommendations using on-chain 
+analytics.
+
+[inspirational] Our vision? [pause] A world where AI agents work FOR you, 
+not against you... with full transparency and user control.
+
+---
+
+[wrapping up, powerful] To summarize.
+
+[proudly listing]
+ChainAgent is... the first DCA platform using ERC-seven-seven-one-five 
+Advanced Permissions.
+
+Fully non-custodial... your funds, your wallet.
+
+Real-time monitoring with Envio indexing.
+
+Multi-agent architecture with sub-delegation support.
+
+[impressively] And built in just forty-eight hours for this hackathon.
+
+[passionate] We're not just automating trades. 
+[building to climax] We're pioneering a new model for human-agent 
+collaboration in DeFi.
+
+[grateful, warm] Thank you.
+
+[pause, profound] The future of autonomous finance... starts here.
+
+[smiling, open] I'm happy to take any questions.
+
+================================================================================
+                              END OF SCRIPT
+================================================================================
+
+PRONUNCIATION GUIDE:
+--------------------
+- ERC-7715: "E-R-C seven seven one five"
+- ERC-7710: "E-R-C seven seven one zero"
+- wagmi: "wag-mee"
+- viem: "vee-em"
+- Sepolia: "seh-POH-lee-ah"
+- Envio: "EN-vee-oh"
+- DeFi: "dee-fie"
+- CeFi: "see-fie"
+
+TIMING MARKERS:
+---------------
+[brief pause] = 1 second
+[pause] = 2-3 seconds
+[pause for effect] = 3-4 seconds
+[long pause] = 5+ seconds
+
+================================================================================

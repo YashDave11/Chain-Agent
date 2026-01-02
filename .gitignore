@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Foundry
+contracts/cache/
+contracts/out/
+
+# Envio
+indexer/generated/
+indexer/.envio/
+
+# Logs
+*.log
+npm-debug.log*

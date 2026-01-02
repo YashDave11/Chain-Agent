@@ -1,0 +1,27 @@
+{
+  "name": "chainagent-indexer",
+  "version": "1.0.0",
+  "description": "ChainAgent DCA Automation Event Indexer powered by Envio",
+  "main": "src/EventHandlers.ts",
+  "scripts": {
+    "codegen": "envio codegen",
+    "dev": "envio dev",
+    "start": "envio start",
+    "stop": "envio stop",
+    "test": "echo \"No tests yet\""
+  },
+  "keywords": [
+    "envio",
+    "blockchain",
+    "indexer",
+    "graphql",
+    "ethereum",
+    "sepolia",
+    "dca"
+  ],
+  "author": "ChainAgent Team",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

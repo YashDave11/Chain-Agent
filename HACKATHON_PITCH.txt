@@ -1,0 +1,276 @@
+================================================================================
+                        CHAINAGENT - HACKATHON PITCH SCRIPT
+                            MetaMask AI Hackathon 2025
+                               Duration: 5-6 Minutes
+================================================================================
+
+--------------------------------------------------------------------------------
+SLIDE 1: OPENING HOOK (30 seconds)
+--------------------------------------------------------------------------------
+
+"How many of you have ever missed a perfect buying opportunity because you 
+weren't watching the charts at 3 AM?"
+
+[PAUSE FOR EFFECT]
+
+"Last month, ETH dropped 8% in a flash crash. By the time most people woke up, 
+it had already recovered. The opportunity was gone."
+
+"What if you could sleep peacefully, knowing an AI agent was watching the 
+market for you - and actually executing trades on your behalf?"
+
+"Today, I'm excited to introduce ChainAgent - the first autonomous DCA 
+platform powered by MetaMask's new Advanced Permissions standard."
+
+
+--------------------------------------------------------------------------------
+SLIDE 2: THE PROBLEM (45 seconds)
+--------------------------------------------------------------------------------
+
+"Let's talk about Dollar-Cost Averaging - or DCA. It's one of the most 
+proven investment strategies, especially for volatile assets like crypto."
+
+"The problem? It requires CONSTANT attention."
+
+THREE PAIN POINTS:
+
+1. "You need to manually execute trades at specific intervals"
+2. "You miss opportunities when prices dip unexpectedly"  
+3. "Existing solutions require you to give up custody of your funds"
+
+"Current DEX aggregators can help with swaps, but they can't ACT on your 
+behalf. You still need to initiate every transaction."
+
+"And centralized exchanges? They require you to deposit your funds - 
+giving up custody and control."
+
+"We asked ourselves: What if we could have the automation of centralized 
+services with the security of self-custody?"
+
+
+--------------------------------------------------------------------------------
+SLIDE 3: THE SOLUTION - CHAINAGENT (60 seconds)
+--------------------------------------------------------------------------------
+
+"ChainAgent is an autonomous DCA platform that uses MetaMask's ERC-7715 
+Advanced Permissions to safely automate your crypto investments."
+
+[DEMO THE LANDING PAGE]
+
+"Here's how it works in three simple steps:"
+
+STEP 1: GRANT PERMISSION
+"You connect your MetaMask wallet and set your parameters:
+ - Daily USDC limit (say $100)
+ - Duration (30 days)
+ - Buy trigger (when ETH drops 5%)"
+
+"This creates a TIME-BOUND, AMOUNT-LIMITED permission grant using the 
+wallet_grantPermissions RPC method. Your funds never leave your wallet."
+
+STEP 2: AGENT MONITORS
+"Our CoordinatorAgent, deployed on Sepolia, receives this permission and 
+monitors the market 24/7. When ETH price drops by your threshold, it 
+activates."
+
+STEP 3: AUTOMATIC EXECUTION
+"The CoordinatorAgent issues a SUB-DELEGATION to our ExecutionAgent using 
+the ERC-7710 delegation framework. The ExecutionAgent then swaps your USDC 
+for ETH on Uniswap - all within your approved limits."
+
+"The ETH lands directly in YOUR wallet. Not ours. Yours."
+
+
+--------------------------------------------------------------------------------
+SLIDE 4: LIVE DEMO (90 seconds)
+--------------------------------------------------------------------------------
+
+[NAVIGATE TO DASHBOARD]
+
+"Let me show you the live dashboard."
+
+"Here you can see:
+ - Real-time connection to Sepolia testnet
+ - Live block updates - watch this number increment
+ - Your configured DCA parameters"
+
+[POINT TO LIVE STATUS]
+
+"The Live Status card shows real-time data pulled directly from our smart 
+contracts using wagmi hooks with automatic 5-second polling and block-based 
+refresh."
+
+[POINT TO TIMELINE]
+
+"The History Timeline - powered by Envio's HyperIndex - shows every action:
+ - Permission granted
+ - Sub-delegation issued
+ - Swaps executed
+ - ETH transferred"
+
+[CLICK GRANT PERMISSION]
+
+"When you click 'Grant Permission & Start', MetaMask prompts you to approve. 
+Notice - we're NOT asking for unlimited approval. We're asking for:
+ - A specific daily limit
+ - A specific total limit
+ - A specific time duration"
+
+"This is the power of ERC-7715 - granular, revocable, time-bound permissions."
+
+
+--------------------------------------------------------------------------------
+SLIDE 5: TECHNICAL ARCHITECTURE (60 seconds)
+--------------------------------------------------------------------------------
+
+"Let me break down the technical stack:"
+
+SMART CONTRACTS (Solidity + Hardhat):
+
+"We deployed three contracts to Sepolia:
+
+1. MockPriceOracle - Simulates Chainlink price feeds. Returns ETH price with 
+   8-decimal precision. Supports price dip simulation for demo purposes.
+
+2. CoordinatorAgent - The brain of our system. It:
+   - Receives permissions via receivePermission()
+   - Tracks daily and total spending limits
+   - Issues sub-delegations to ExecutionAgent
+   - Emits events: PermissionGranted, SubDelegationIssued
+
+3. ExecutionAgent - The executor. It:
+   - Validates delegated authority from Coordinator
+   - Executes swaps via Uniswap V3 Router
+   - Transfers acquired ETH to user's wallet
+   - Tracks global and per-user statistics"
+
+FRONTEND (Next.js 16 + wagmi + viem):
+
+"Our frontend uses:
+ - wagmi for React hooks-based Web3 integration
+ - viem for low-level Ethereum interactions
+ - useBlockNumber with watch: true for real-time updates
+ - TanStack Query for efficient data caching and polling"
+
+INDEXING (Envio HyperIndex):
+
+"All contract events are indexed via Envio, providing:
+ - GraphQL API for querying historical data
+ - Sub-second indexing latency
+ - Type-safe event handlers"
+
+
+--------------------------------------------------------------------------------
+SLIDE 6: SECURITY & TRUST MODEL (45 seconds)
+--------------------------------------------------------------------------------
+
+"Now, let's address the elephant in the room: 'Why should I trust your agents?'"
+
+"Great question. Here's our security model:"
+
+1. NON-CUSTODIAL
+   "Your funds NEVER leave your wallet. Agents can only move assets within 
+   your pre-approved limits."
+
+2. TIME-BOUND PERMISSIONS
+   "Every permission has an expiration. 7 days, 30 days, 90 days - you 
+   choose. After that, auto-revoke."
+
+3. DAILY LIMITS
+   "Even within the permission window, agents are capped at your daily 
+   limit. A 100 USDC/day limit means that's the maximum exposure per day."
+
+4. ON-CHAIN TRANSPARENCY
+   "Every action is recorded on-chain and indexed via Envio. You can verify 
+   every swap, every delegation, every transfer."
+
+5. REVOCABLE ANYTIME
+   "Changed your mind? Revoke the permission instantly through the dashboard."
+
+"This is the future of autonomous finance - trustless by design."
+
+
+--------------------------------------------------------------------------------
+SLIDE 7: MARKET OPPORTUNITY (30 seconds)  
+--------------------------------------------------------------------------------
+
+"The DCA market is massive:"
+
+- "Coinbase reports over $2 billion in recurring buys set up by users"
+- "DeFiLlama tracks $50+ billion in DEX volume monthly"
+- "ERC-7715 is brand new - we're first movers in this space"
+
+"ChainAgent bridges CeFi convenience with DeFi security. We're not just 
+building a product - we're establishing a new paradigm for autonomous 
+on-chain agents."
+
+
+--------------------------------------------------------------------------------
+SLIDE 8: ROADMAP & VISION (30 seconds)
+--------------------------------------------------------------------------------
+
+"Where do we go from here?"
+
+PHASE 1 (NOW): 
+"DCA automation with price-dip triggers on Sepolia testnet"
+
+PHASE 2: 
+"Mainnet deployment + Multi-token support (WBTC, stablecoins)"
+
+PHASE 3: 
+"Advanced strategies - Grid trading, limit orders, yield farming delegation"
+
+PHASE 4: 
+"AI-powered strategy recommendations using on-chain analytics"
+
+"Our vision: A world where AI agents work FOR you, not against you - 
+with full transparency and user control."
+
+
+--------------------------------------------------------------------------------
+SLIDE 9: CLOSING & CTA (30 seconds)
+--------------------------------------------------------------------------------
+
+"To summarize:"
+
+"ChainAgent is:
+ ✓ The first DCA platform using ERC-7715 Advanced Permissions
+ ✓ Fully non-custodial - your funds, your wallet
+ ✓ Real-time monitoring with Envio indexing
+ ✓ Multi-agent architecture with sub-delegation support
+ ✓ Built in 48 hours for this hackathon"
+
+"We're not just automating trades. We're pioneering a new model for 
+human-agent collaboration in DeFi."
+
+"Thank you. The future of autonomous finance starts here."
+
+[PAUSE]
+
+"I'm happy to take any questions."
+
+
+================================================================================
+                              END OF PITCH SCRIPT
+================================================================================
+
+TECHNICAL TERMS GLOSSARY (for Q&A):
+-----------------------------------
+- ERC-7715: Advanced Permissions standard for granular wallet permissions
+- ERC-7710: Delegation framework for on-chain permission transfers
+- wallet_grantPermissions: MetaMask RPC method for permission grants
+- wagmi: React hooks library for Ethereum
+- viem: TypeScript library for Ethereum interactions
+- Envio HyperIndex: Real-time blockchain indexing service
+- Sepolia: Ethereum testnet used for development
+- Sub-delegation: Transferring a subset of permissions to another agent
+- Non-custodial: User retains full control of assets
+- DCA: Dollar-Cost Averaging investment strategy
+
+CONTRACT ADDRESSES (Sepolia):
+-----------------------------
+- MockPriceOracle:  0x11aa01e0d27FD26aed1d7A82A4c25433ee9de3AA
+- CoordinatorAgent: 0x7B3227C2337672EEbEd0fe0616Ecd3796c6a6F1D
+- ExecutionAgent:   0x594bD38FC2d9b9bdEaD9B3D24e29f0B0F1E0BB87
+
+================================================================================

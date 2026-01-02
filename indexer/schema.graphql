@@ -1,0 +1,86 @@
+# ChainAgent GraphQL Schema for Envio Indexer
+# Tracks permissions, delegations, and swap executions
+
+type Permission @entity {
+  id: ID!
+  user: String!
+  token: String!
+  dailyLimit: BigInt!
+  totalLimit: BigInt!
+  duration: BigInt!
+  targetDipBps: BigInt!
+  startTime: BigInt!
+  isActive: Boolean!
+  totalSpent: BigInt!
+  createdAt: BigInt!
+  revokedAt: BigInt
+  delegations: [Delegation!]! @derivedFrom(field: "permission")
+  executions: [Execution!]! @derivedFrom(field: "permission")
+}
+
+type Delegation @entity {
+  id: ID!
+  permission: Permission!
+  user: String!
+  executor: String!
+  dailyLimit: BigInt!
+  isActive: Boolean!
+  createdAt: BigInt!
+  revokedAt: BigInt
+  executions: [Execution!]! @derivedFrom(field: "delegation")
+}
+
+type Execution @entity {
+  id: ID!
+  permission: Permission!
+  delegation: Delegation
+  user: String!
+  executor: String!
+  tokenIn: String!
+  tokenOut: String!
+  amountIn: BigInt!
+  amountOut: BigInt!
+  price: BigInt!
+  timestamp: BigInt!
+  transactionHash: String!
+  blockNumber: BigInt!
+}
+
+type DailyStats @entity {
+  id: ID!  # Format: user-YYYY-MM-DD
+  user: String!
+  date: String!
+  totalSpent: BigInt!
+  totalEthReceived: BigInt!
+  executionCount: Int!
+  averagePrice: BigInt!
+}
+
+type PriceUpdate @entity {
+  id: ID!
+  token: String!
+  oldPrice: BigInt!
+  newPrice: BigInt!
+  timestamp: BigInt!
+  transactionHash: String!
+}
+
+type QuotaExceeded @entity {
+  id: ID!
+  user: String!
+  requested: BigInt!
+  available: BigInt!
+  timestamp: BigInt!
+  transactionHash: String!
+}
+
+type GlobalStats @entity {
+  id: ID!  # "global"
+  totalPermissions: Int!
+  activePermissions: Int!
+  totalDelegations: Int!
+  totalExecutions: Int!
+  totalUsdcSpent: BigInt!
+  totalEthBought: BigInt!
+  lastUpdated: BigInt!
+}
